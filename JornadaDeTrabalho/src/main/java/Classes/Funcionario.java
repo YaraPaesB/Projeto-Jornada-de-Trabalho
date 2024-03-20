@@ -48,11 +48,8 @@ public class Funcionario {
     public void setPontos(List<Ponto> pontos) {
         this.pontos = pontos;
     }
-    
-    
-   
-    
-    
-    
-    
+
+    public void addPonto(Ponto ponto) {
+        this.pontos.add(ponto);
+    }
 }

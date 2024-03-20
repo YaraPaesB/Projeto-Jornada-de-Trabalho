@@ -28,14 +28,15 @@ public class TestePonto {
     public void Teste1Ponto() {
         
         var horarioJornada = new HorarioJornada(null,  LocalTime.of(8, 0), LocalTime.of(18, 0), 1);
-        var jornada = new Jornada(null, "Teste", List.of(horarioJornada));
+        var horarioJornadaAdicional = new HorarioJornada(null,  LocalTime.of(18, 0), LocalTime.of(22, 0), 1.5f);
+        var jornada = new Jornada(null, "Teste", List.of(horarioJornada, horarioJornadaAdicional));
         var ponto = new Ponto(
                 null, 
-                LocalDateTime.of(LocalDate.of(2024, Month.MARCH, 18), LocalTime.of(17, 0)), 
-                LocalDateTime.of(LocalDate.of(2024, Month.MARCH, 19), LocalTime.of(9, 0)), 
+                LocalDateTime.of(LocalDate.of(2024, Month.MARCH, 18), LocalTime.of(8, 0)), 
+                LocalDateTime.of(LocalDate.of(2024, Month.MARCH, 19), LocalTime.of(22, 0)), 
                 jornada
         );
         var horas = ponto.CalcHorasTrabalhadas();
-        assertEquals(horas, 2);
+        assertEquals(horas, 16);
     }
 }
