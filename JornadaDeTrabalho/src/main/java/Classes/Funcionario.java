@@ -11,42 +11,42 @@ import java.util.List;
  * @author yarap
  */
 public class Funcionario {
-    String ID;
-    String Nome;
-    Jornada Jornada;
-    List<Ponto> Pontos;
+    String id;
+    String nome;
+    Jornada jornada;
+    List<Ponto> pontos;
 
-    public Funcionario(String ID, String Nome, Jornada Jornada, List<Ponto> Pontos) {
-        this.ID = null;
-        this.Nome = Nome;
-        this.Jornada = Jornada;
-        this.Pontos = Pontos;
+    public Funcionario(String id, String nome, Jornada jornada, List<Ponto> pontos) {
+        this.id = null;
+        this.nome = nome;
+        this.jornada = jornada;
+        this.pontos = pontos;
     }
 
     
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
-    public void setNome(String Nome) {
-        this.Nome = Nome;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Jornada getJornada() {
-        return Jornada;
+        return jornada;
     }
 
-    public void setJornada(Jornada Jornada) {
-        this.Jornada = Jornada;
+    public void setJornada(Jornada jornada) {
+        this.jornada = jornada;
     }
 
     public List<Ponto> getPontos() {
-        return Pontos;
+        return pontos;
     }
 
-    public void setPontos(List<Ponto> Pontos) {
-        this.Pontos = Pontos;
+    public void setPontos(List<Ponto> pontos) {
+        this.pontos = pontos;
     }
     
     

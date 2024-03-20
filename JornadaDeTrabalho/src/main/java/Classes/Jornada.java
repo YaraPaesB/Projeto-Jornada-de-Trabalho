@@ -11,30 +11,30 @@ import java.util.List;
  * @author yarap
  */
 public class Jornada {
-    String ID;
-    String Nome;
-    List<HorarioJornada> Turnos;
+    String id;
+    String nome;
+    List<HorarioJornada> turnos;
 
-    public Jornada(String ID, String Nome, List<HorarioJornada> Turnos) {
-        this.ID = null;
-        this.Nome = Nome;
-        this.Turnos = Turnos;
+    public Jornada(String id, String nome, List<HorarioJornada> turnos) {
+        this.id = null;
+        this.nome = nome;
+        this.turnos = turnos;
     }
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
-    public void setNome(String Nome) {
-        this.Nome = Nome;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public List<HorarioJornada> getTurnos() {
-        return Turnos;
+        return turnos;
     }
 
-    public void setTurnos(List<HorarioJornada> Turnos) {
-        this.Turnos = Turnos;
+    public void setTurnos(List<HorarioJornada> turnos) {
+        this.turnos = turnos;
     }
     
     

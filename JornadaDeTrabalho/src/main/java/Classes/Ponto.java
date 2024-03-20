@@ -4,6 +4,8 @@
  */
 package Classes;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 /**
@@ -11,48 +13,50 @@ import java.util.Date;
  * @author yarap
  */
 public class Ponto {
-    String ID;
-    Date HoraEntrada;
-    Date HoraSaida;
-    Jornada Jornada;
+    String id;
+    LocalDateTime horaEntrada;
+    LocalDateTime horaSaida;
+    Jornada jornada;
 
-    public Ponto(String ID, Date HoraEntrada, Date HoraSaida, Jornada Jornada) {
-        this.ID = null;
-        this.HoraEntrada = HoraEntrada;
-        this.HoraSaida = HoraSaida;
-        this.Jornada = Jornada;
+    public Ponto(String id, LocalDateTime horaEntrada, LocalDateTime horaSaida, Jornada jornada) {
+        this.id = null;
+        this.horaEntrada = horaEntrada;
+        this.horaSaida = horaSaida;
+        this.jornada = jornada;
     }
 
-    public Date getHoraEntrada() {
-        return HoraEntrada;
+    public LocalDateTime getHoraEntrada() {
+        return horaEntrada;
     }
 
-    public void setHoraEntrada(Date HoraEntrada) {
-        this.HoraEntrada = HoraEntrada;
+    public void setHoraEntrada(LocalDateTime horaEntrada) {
+        this.horaEntrada = horaEntrada;
     }
 
-    public Date getHoraSaida() {
-        return HoraSaida;
+    public LocalDateTime getHoraSaida() {
+        return horaSaida;
     }
 
-    public void setHoraSaida(Date HoraSaida) {
-        this.HoraSaida = HoraSaida;
+    public void setHoraSaida(LocalDateTime horaSaida) {
+        this.horaSaida = horaSaida;
     }
 
     public Jornada getJornada() {
-        return Jornada;
+        return jornada;
     }
 
-    public void setJornada(Jornada Jornada) {
-        this.Jornada = Jornada;
+    public void setJornada(Jornada jornada) {
+        this.jornada = jornada;
     }
     
     public float CalcHorasTrabalhadas() {
-       final var turnos = this.Jornada.getTurnos();
+       final var turnos = this.jornada.getTurnos();
+       var horasTotais = 0;
        
         for (HorarioJornada turno : turnos) {
-            
+            horasTotais += turno.getHorasTrabalhadasTurno(this.horaEntrada.toLocalTime(), this.horaSaida.toLocalTime());
         }
+        return horasTotais;
     }
     
     

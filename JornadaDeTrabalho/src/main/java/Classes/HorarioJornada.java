@@ -15,53 +15,60 @@ import java.util.Date;
  * @author yarap
  */
 public class HorarioJornada {
-    private String ID;
-    LocalTime HoraInicio;
-    LocalTime HoraFinal;
-    float Peso;
+    private String id;
+    LocalTime horaInicio;
+    LocalTime horaFinal;
+    float peso;
 
-    public HorarioJornada(String ID, LocalTime HoraInicio, LocalTime HoraFinal, float Peso) {
-        this.ID = null;
-        this.HoraInicio = HoraInicio;
-        this.HoraFinal = HoraFinal;
-        this.Peso = Peso;
+    public HorarioJornada(String id, LocalTime horaInicio, LocalTime horaFinal, float peso) {
+        this.id = null;
+        this.horaInicio = horaInicio;
+        this.horaFinal = horaFinal;
+        this.peso = peso;
     }
 
     public LocalTime getHoraInicio() {
-        return HoraInicio;
+        return horaInicio;
     }
 
-    public void setHoraInicio(LocalTime HoraInicio) {
-        this.HoraInicio = HoraInicio;
+    public void setHoraInicio(LocalTime horaInicio) {
+        this.horaInicio = horaInicio;
     }
 
     public LocalTime getHoraFinal() {
-        return HoraFinal;
+        return horaFinal;
     }
 
-    public void setHoraFinal(LocalTime HoraFinal) {
-        this.HoraFinal = HoraFinal;
+    public void setHoraFinal(LocalTime horaFinal) {
+        this.horaFinal = horaFinal;
     }
 
     public float getPeso() {
-        return Peso;
+        return peso;
     }
 
-    public void setPeso(float Peso) {
-        this.Peso = Peso;
+    public void setPeso(float peso) {
+        this.peso = peso;
     }
     
     public float getHorasTrabalhadasTurno(LocalTime horaEntrada, LocalTime horaSaida) {
-        if(this.HoraFinal.compareTo(horaEntrada) >= 0 && horaSaida.compareTo(this.HoraInicio) <= 0) {
+        if(this.horaFinal.compareTo(horaEntrada) >= 0 && horaSaida.compareTo(this.horaInicio) <= 0) {
             return 0;
         }
         
-        var calcHoraEntrada = this.HoraInicio.compareTo(horaEntrada) <= 0 ? horaEntrada : this.HoraInicio;
-        var calcHoraSaida = this.HoraFinal.compareTo(horaSaida) >= 0 ? horaSaida : this.HoraFinal;
-
-        var calculoHoras = Duration.between(calcHoraEntrada, calcHoraSaida).toMinutes() / 60;
+        if(horaEntrada.compareTo(horaSaida) >= 0){
+            var calcTempoEntrada = this.getHorasTrabalhadasTurno(horaEntrada, this.horaFinal);
+            var calcTempoSaida = this.getHorasTrabalhadasTurno(this.horaInicio, horaSaida);
+            return calcTempoEntrada + calcTempoSaida;
+        }
         
-        return calculoHoras * this.Peso;
+        var calcHoraEntrada = this.horaInicio.compareTo(horaEntrada) <= 0 ? horaEntrada : this.horaInicio;
+        var calcHoraSaida = this.horaFinal.compareTo(horaSaida) >= 0 ? horaSaida : this.horaFinal;
+
+        var calculoMinutos = Duration.between(calcHoraEntrada, calcHoraSaida).toMinutes();
+        var calculoHoras = calculoMinutos / 60f;
+        
+        return calculoHoras * this.peso;
     }
     
     

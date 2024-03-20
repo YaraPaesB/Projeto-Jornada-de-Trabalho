@@ -9,36 +9,20 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import 
-
+import Classes.*;
+import java.time.LocalTime;
 /**
  *
  * @author yarap
  */
 public class TesteDeJornada {
     
-    public TesteDeJornada() {
+    @Test
+    public void Teste1Jornada() {
+        var testeJornada = new HorarioJornada(null,  LocalTime.of(8, 0), LocalTime.of(18, 0), 1);
+        
+        var horasTrabalhadas = testeJornada.getHorasTrabalhadasTurno(LocalTime.of(17, 0), LocalTime.of(9, 0));
+        assertEquals(horasTrabalhadas, 2f);
     }
     
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }
