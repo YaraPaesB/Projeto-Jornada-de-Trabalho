@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.util.Date;
 
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -16,9 +17,9 @@ import java.util.Date;
  */
 public class HorarioJornada {
     private String id;
-    LocalTime horaInicio;
-    LocalTime horaFinal;
-    float peso;
+    private LocalTime horaInicio;
+    private LocalTime horaFinal;
+    private float peso;
 
     public HorarioJornada(String id, LocalTime horaInicio, LocalTime horaFinal, float peso) {
         this.id = null;
@@ -57,16 +58,16 @@ public class HorarioJornada {
         }
         
         if(horaEntrada.compareTo(horaSaida) >= 0){
-            var calcTempoEntrada = this.getHorasTrabalhadasTurno(horaEntrada, this.horaFinal);
-            var calcTempoSaida = this.getHorasTrabalhadasTurno(this.horaInicio, horaSaida);
+            float calcTempoEntrada = this.getHorasTrabalhadasTurno(horaEntrada, this.horaFinal);
+            float calcTempoSaida = this.getHorasTrabalhadasTurno(this.horaInicio, horaSaida);
             return calcTempoEntrada + calcTempoSaida;
         }
         
-        var calcHoraEntrada = this.horaInicio.compareTo(horaEntrada) <= 0 ? horaEntrada : this.horaInicio;
-        var calcHoraSaida = this.horaFinal.compareTo(horaSaida) >= 0 ? horaSaida : this.horaFinal;
+        LocalTime calcHoraEntrada = this.horaInicio.compareTo(horaEntrada) <= 0 ? horaEntrada : this.horaInicio;
+        LocalTime calcHoraSaida = this.horaFinal.compareTo(horaSaida) >= 0 ? horaSaida : this.horaFinal;
 
-        var calculoMinutos = Duration.between(calcHoraEntrada, calcHoraSaida).toMinutes();
-        var calculoHoras = calculoMinutos / 60f;
+        float calculoMinutos = Duration.between(calcHoraEntrada, calcHoraSaida).toMinutes();
+        float calculoHoras = calculoMinutos / 60f;
         
         return calculoHoras * this.peso;
     }

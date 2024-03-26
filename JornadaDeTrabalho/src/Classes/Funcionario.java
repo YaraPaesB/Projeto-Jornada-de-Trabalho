@@ -6,15 +6,16 @@ package Classes;
 
 import java.util.List;
 
+
 /**
  *
  * @author yarap
  */
 public class Funcionario {
-    String id;
-    String nome;
-    Jornada jornada;
-    List<Ponto> pontos;
+    private String id;
+    private String nome;
+    private Jornada jornada;
+    private List<Ponto> pontos;
 
     public Funcionario(String id, String nome, Jornada jornada, List<Ponto> pontos) {
         this.id = null;

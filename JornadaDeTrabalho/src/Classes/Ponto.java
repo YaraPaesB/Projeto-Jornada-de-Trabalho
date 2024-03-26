@@ -7,16 +7,18 @@ package Classes;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
+
 
 /**
  *
  * @author yarap
  */
 public class Ponto {
-    String id;
-    LocalDateTime horaEntrada;
-    LocalDateTime horaSaida;
-    Jornada jornada;
+    private String id;
+    private LocalDateTime horaEntrada;
+    private LocalDateTime horaSaida;
+    private Jornada jornada;
 
     public Ponto(String id, LocalDateTime horaEntrada, LocalDateTime horaSaida, Jornada jornada) {
         this.id = null;
@@ -50,8 +52,8 @@ public class Ponto {
     }
     
     public float CalcHorasTrabalhadas() {
-       final var turnos = this.jornada.getTurnos();
-       var horasTotais = 0;
+       final List<HorarioJornada> turnos = this.jornada.getTurnos();
+       float horasTotais = 0;
        
         for (HorarioJornada turno : turnos) {
             horasTotais += turno.getHorasTrabalhadasTurno(this.horaEntrada.toLocalTime(), this.horaSaida.toLocalTime());

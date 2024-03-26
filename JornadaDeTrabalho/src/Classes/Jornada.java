@@ -6,14 +6,15 @@ package Classes;
 
 import java.util.List;
 
+
 /**
  *
  * @author yarap
  */
 public class Jornada {
-    String id;
-    String nome;
-    List<HorarioJornada> turnos;
+    private String id;
+    private String nome;
+    private List<HorarioJornada> turnos;
 
     public Jornada(String id, String nome, List<HorarioJornada> turnos) {
         this.id = null;
